@@ -1,7 +1,7 @@
 title: $:/plugins/gsd5/core/ui/addins/ViewContact
 tags: $:/tags/GSD5ActionCore $:/tags/GSD5ProjectCore
 
-<p class="gsd-bluebox-droplist">
+<p class="gsd-gsdpanel-droplist">
     Contact:<br/>
     <$select field="gsd_contact" default="none">
         <option value="">--</option>
@@ -23,6 +23,13 @@ tags: $:/tags/GSD5ActionCore $:/tags/GSD5ProjectCore
     <span class="goto-link">
         <$list filter=[is[current]!field:gsd_contact[]]>
             &nbsp;<$link to={{!!gsd_contact}}>>></$link>
+        </$list>
+        <$list filter=[is[current]field:gsd_contact[]]>
+        <$set name="gsd_type" value="contact">
+        <$set name="gsd_realm" value={{$:/currentRealm}}>
+        &nbsp;<$gsdtiddler class="tc-btn-invisible" setNow="true" skeleton="$:/plugins/gsd5/core/ui/skeletons/ContactSkeleton" edit={{$:/plugins/gsd5/core/ui/config/new-tiddler-show}}><span style="text-decoration:underline">new</span></$gsdtiddler>
+        </$set>
+        </$set>
         </$list>
     </span>
 </p>
